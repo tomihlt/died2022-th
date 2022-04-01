@@ -59,7 +59,34 @@ public class Registro {
 
 		this.EMPTY--;
 		this.FULL++;
-
+		
+	}
+	
+	public double mediaAsCelcius() {
+		
+		double media = 0;
+		
+		for(int i = 0 ; i < this.FULL ; i++)
+			media += this.historico[i].asCelcius();
+		
+		if(this.FULL == 0)
+			return 0.0;
+		else
+			return media/((double) this.FULL);
+	}
+	
+	public double mediaAsFahrenheit() {
+		
+		double media = 0;
+		
+		for(int i = 0 ; i < this.FULL ; i++)
+			media += this.historico[i].asFahrenheit();
+		
+		if(this.FULL == 0)
+			return 0.0;
+		else
+			return media/((double) this.FULL);
+		
 	}
 
 }
