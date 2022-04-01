@@ -1,27 +1,25 @@
 package died.guia1.ejercicio03;
 
+import java.util.ArrayList;
+
 import died.guia1.ejercicio02.Temperatura;
 
 public class Registro {
 
 	private String ciudad;
-	private Temperatura[] historico;
-	private int FULL, EMPTY; // FULL indica la cantidad de registros que hay,
-								// EMPTY la cantidad que tengo vacío en el array
+	private ArrayList<Temperatura> historico;
 
 	public Registro() {
 
 		this.ciudad = "-";
-		this.EMPTY = 30;
-		this.FULL = 0;
+		this.historico = new ArrayList();
 
 	}
 
 	public Registro(String ciudad) {
 
 		this.ciudad = ciudad;
-		this.EMPTY = 30;
-		this.FULL = 0;
+		this.historico = new ArrayList();
 
 	}
 
@@ -29,64 +27,50 @@ public class Registro {
 		return ciudad;
 	}
 
-	public Temperatura[] getHistorico() {
-		return historico;
-	}
-
-	public int getFULL() {
-		return FULL;
-	}
-
-	public int getEMPTY() {
-		return EMPTY;
-	}
-
 	public void imprimir() {
 
-		for (int i = 0; i < FULL; i++) {
-			System.out.println("TEMPERATURAS REGISTRADAS EN: " + this.ciudad);
-			System.out.println((i + 1) + historico[i].toString());
+		System.out.println("TEMPERATURAS REGISTRADAS EN: " + this.ciudad);
+
+		for (int i = 0; i < this.historico.size(); i++) {
+			System.out.println((i + 1) + " " + historico.get(i).toString());
 		}
 
 	}
 
 	public void agregar(Temperatura T) {
 
-		if (this.EMPTY == 0)
+		if (this.historico.size() == 30)
 			return;
 
-		this.historico[FULL] = T;
+		this.historico.add(T);
 
-		this.EMPTY--;
-		this.FULL++;
-		
 	}
-	
+
 	public double mediaAsCelcius() {
-		
+
 		double media = 0;
-		
-		for(int i = 0 ; i < this.FULL ; i++)
-			media += this.historico[i].asCelcius();
-		
-		if(this.FULL == 0)
+
+		for (int i = 0; i < this.historico.size(); i++)
+			media += this.historico.get(i).asCelcius();
+
+		if (this.historico.size() == 0)
 			return 0.0;
 		else
-			return media/((double) this.FULL);
+			return media / (this.historico.size());
 	}
-	
+
 	public double mediaAsFahrenheit() {
-		
+
 		double media = 0;
-		
-		for(int i = 0 ; i < this.FULL ; i++)
-			media += this.historico[i].asFahrenheit();
-		
-		if(this.FULL == 0)
+
+		for (int i = 0; i < this.historico.size(); i++)
+			media += this.historico.get(i).asFahrenheit();
+
+		if (this.historico.size() == 0)
 			return 0.0;
 		else
-			return media/((double) this.FULL);
-		
+			return media / (this.historico.size());
+
 	}
 
 }
