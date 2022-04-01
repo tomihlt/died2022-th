@@ -12,14 +12,14 @@ public class Registro {
 	public Registro() {
 
 		this.ciudad = "-";
-		this.historico = new ArrayList();
+		this.historico = new ArrayList<>();
 
 	}
 
 	public Registro(String ciudad) {
 
 		this.ciudad = ciudad;
-		this.historico = new ArrayList();
+		this.historico = new ArrayList<>();
 
 	}
 
