@@ -15,6 +15,7 @@ public class App {
 		aux.agregar(taux2);
 		aux.imprimir();
 		System.out.println("Media en C: " + aux.mediaAsCelcius());
+		System.out.println("Maximo en C: " + aux.maximo().toString());
 
 	}
 

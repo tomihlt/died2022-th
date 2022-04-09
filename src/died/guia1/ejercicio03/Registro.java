@@ -1,7 +1,6 @@
 package died.guia1.ejercicio03;
 
 import java.util.ArrayList;
-
 import died.guia1.ejercicio02.Temperatura;
 
 public class Registro {
@@ -12,7 +11,7 @@ public class Registro {
 	public Registro() {
 
 		this.ciudad = "-";
-		this.historico = new ArrayList<>();
+		this.historico = new ArrayList<Temperatura>();
 
 	}
 
@@ -71,6 +70,29 @@ public class Registro {
 		else
 			return media / (this.historico.size());
 
+	}
+	
+	public Temperatura maximo() {
+		
+		Temperatura aux = this.historico.get(0);
+		
+		return this.maximo(aux, 1);
+		
+	}
+	
+	private Temperatura maximo(Temperatura t, int i) {
+		
+		if(i >= this.historico.size())
+			return t;
+		
+		if(this.historico.get(i).asCelcius() > t.asCelcius())
+			return this.maximo(this.historico.get(i), i+1);
+		else
+			if(i+1 > this.historico.size())
+				return t;
+			else
+				return this.maximo(t, i+1);
+		
 	}
 
 }

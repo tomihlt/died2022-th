@@ -19,9 +19,9 @@ public class Temperatura {
 
 		switch (this.escala) {
 			case CELCIUS :
-				return Double.toString(this.grados).concat(" Â°C");
+				return Double.toString(this.grados).concat(" °C");
 			case FAHRENHEIT :
-				return Double.toString(this.grados).concat(" Â°F");
+				return Double.toString(this.grados).concat(" °F");
 			default :
 				return "NULL";
 		}
